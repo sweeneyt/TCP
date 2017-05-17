@@ -35,7 +35,7 @@ public class TCPClient {
         }while(menuChoice != 5);
 
         // Send user input to Server
-        toServer.writeBytes(sent +'\n');
+        toServer.writeBytes(username +'\n');
 
         // Read line from Server
         mSent = inServer.readLine();
@@ -54,11 +54,11 @@ public class TCPClient {
 
     public static int showMenu() throws Exception{
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("1. List Available Rooms \n");
-        System.out.println("2. Create a Room \n");
+        System.out.println("1. List Available Rooms");
+        System.out.println("2. Create a Room");
         System.out.println("3. List Rooms currently in");
         System.out.println("4. Leave Room");
-        System.out.println("5. Leave Server\n");
+        System.out.println("5. Leave Server");
         int menuChoice = in.read();
         return menuChoice;
     }
