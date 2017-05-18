@@ -5,28 +5,27 @@ import java.util.*;
  */
 public class Room {
     private String name;
-    private List<String> usernames;
+    private List<String> userNames;
 
     public Room(String name){
         this.name = name;
-        this.usernames = new ArrayList<>();
+        this.userNames = new ArrayList<>();
     }
 
-    private addUser(String user){
-        if(usernames.contains(user)) {
-            usernames.add(user);
+    private void addUser(String user){
+        if(userNames.contains(user)) {
+            userNames.add(user);
         }
         return;
     }
 
-    private removeUser(String user){
-        if(usernames.contains(user))
-           usernames.remove(user);
+    private void removeUser(String user){
+        if(userNames.contains(user))
+           userNames.remove(user);
         return;
     }
 
-    private listUsers(){
-        for(int i = 0; i < usernames.size(); i++){
-            username.
-        }
+    private List listUsers() {
+        return userName;
+    }
 }
