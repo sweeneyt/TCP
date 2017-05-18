@@ -9,6 +9,7 @@ import java.util.logging.SocketHandler;
 
 public class TCPClient {
 
+
     public static void main(String argv[]) throws Exception
     {
         String sent;
@@ -25,20 +26,33 @@ public class TCPClient {
         DataOutputStream toServer = new DataOutputStream(clientSocket.getOutputStream());
 
         // Create input stream attached to socket
-        BufferedReader inServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
         String username = getUsername();
-        // Send query to Server to see if Username is avaiable
+        // Send query to Server to see if Username is available
         int menuChoice;
         do{
             menuChoice = showMenu();
+            switch(menuChoice){
+                case 1:
+                    toServer.writeByte(menuChoice);
+                    toServer.writeBytes("blank");
+                    break;
+                case 2:
+                    //toServer.writeByte(menuChoice);
+                    //toServer.writeBytes(getRoomToAdd());
+
+            }
+             mSent = inFromServer.readLine();
+            System.out.println("received from server");
+            System.out.println("From Server:" +mSent);
         }while(menuChoice != 5);
 
         // Send user input to Server
         toServer.writeBytes(username +'\n');
 
         // Read line from Server
-        mSent = inServer.readLine();
+        mSent = inFromServer.readLine();
 
         System.out.println("From Server:" +mSent);
 
@@ -59,8 +73,15 @@ public class TCPClient {
         System.out.println("3. List Rooms currently in");
         System.out.println("4. Leave Room");
         System.out.println("5. Leave Server");
-        int menuChoice = in.read();
+        String menuChoiceString = in.readLine();
+        int menuChoice = Integer.parseInt(menuChoiceString);
         return menuChoice;
     }
 
+    public static String getRoomToAdd() throws Exception{
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter Room to Add: ");
+        String roomTodAdd = in.readLine();
+        return roomTodAdd;
+    }
 }
