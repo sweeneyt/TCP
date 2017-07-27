@@ -21,8 +21,7 @@ public class User {
     }
 
     public User(String name, ObjectOutputStream userOut){
-        this.name = name;
-        this.userRooms = new ArrayList<>();
+        this(name);
         this.userOut = userOut;
     }
 

@@ -26,20 +26,17 @@ public class Message implements Serializable{
     }
 
     public Message(int code, String msg){
+        this(code);
         this.msg = msg;
-        this.head = new Header(code);
     }
 
     public Message(int code, String msg, String userFrom){
-        this.msg = msg;
-        this.head = new Header(code);
+        this(code, msg);
         this.userFrom = userFrom;
     }
 
     public Message(int code, String msg, String userFrom, String roomToMsg){
-        this.msg = msg;
-        this.head = new Header(code);
-        this.userFrom = userFrom;
+        this(code, msg, userFrom);
         this.roomToMsg = roomToMsg;
     }
 
